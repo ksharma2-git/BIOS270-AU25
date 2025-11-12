@@ -175,19 +175,23 @@ As a project grows and more people get involved, it becomes harder to keep track
 
 **HW Part A**
 Answer the following questions:
-- Fill in the blank: "Git provides a ... of content changes"
+- Fill in the blank: "Git provides a history of content changes"
 
 - Which git command shows you the historical graphical representation of branching and merging events?
+
+$ git log —graph —decorate — abbrev-commit —all —pretty=oneline
 
 **HW Part B**
 
 > Add your completion screenshots here (Introduction Sequence and Push & Pull — Git Remotes!).
 
 - Introduction Sequence — 4/4 complete:  
-  _Attach image(s) here_
+  _Attach image(s) here_ <img width="622" height="189" alt="Screenshot 2025-11-11 at 8 57 37 PM" src="https://github.com/user-attachments/assets/8b108451-6ba5-4136-82ce-a9c152a76def" />
 
-- Push & Pull — Git Remotes! — 8/8 complete:  
-  _Attach image(s) here_
+
+- Push & Pull — Git Remotes! — 8/8 complete:  <img width="614" height="179" alt="Screenshot 2025-11-11 at 8 58 04 PM" src="https://github.com/user-attachments/assets/a74904cc-70aa-4f63-9d60-d472200ffbc3" />
+
+  _Attach image(s) here_ 
 
 **HW Part C**
 
