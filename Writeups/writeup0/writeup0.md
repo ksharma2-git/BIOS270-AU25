@@ -1,7 +1,7 @@
 # Write-up 0: template
 
-**Name:** Khoa Hoang  
-**Student ID:** khoang99  
+**Name:** Krishna Sharma  
+**Student ID:** ksharma2  
 **Date:** 11/11/2025  
 
 ---
@@ -79,4 +79,4 @@ Learn more about Markdown syntax here:
 
 
 ## Acknowledgement
-Collaborator: Brady Hislop
+
