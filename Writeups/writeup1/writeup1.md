@@ -1,4 +1,4 @@
-# Write-up 0: template
+# Write-up 1: Setup
 
 **Name:** Krishna Sharma  
 **Student ID:** ksharma2  
@@ -8,13 +8,30 @@
 
 ## Overview
 
-This section introduces the purpose of the write-up.  
-For example:  
-> This document is a practice exercise in writing and formatting Markdown files clearly and professionally.
+Write-up 1 questions from the Setup assingment (11/12).
 
 ---
 
 ## Content
+
+
+1. How many slurm job will be submitted?
+
+3 slurm jobs will be submitted, as noted by the array of 0-2.
+
+2. What is the purpose of the if statement?
+
+The if statement serves to divide the lines of the data.txt file between each of the 3 jobs.
+
+3. What is the expected output in each *.out file?
+
+The expected output in each file is “$i: $value” which is each job printing its results. Each job will have 2 lines to process.
+So, 
+SLURM_ARRAY_TASK_ID=0 will have 0:12, 3:8
+SLURM_ARRAY_TASK_ID=1 will have 1:7, 4:27
+SLURM_ARRAY_TASK_ID=2 will have 2:91, 5:30
+
+---
 
 This is the main part of your write-up.  
 You can include explanations, examples, and notes 
