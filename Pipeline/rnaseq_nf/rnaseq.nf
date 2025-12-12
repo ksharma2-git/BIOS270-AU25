@@ -9,6 +9,22 @@ include { TRIMGALORE } from './modules/qc/trimgalore.nf'
 include { SALMON } from './modules/pseudoalign/salmon.nf'
 include { DESEQ2 } from './modules/diffexp/deseq2.nf'
 
+// Add the SALMON_INDEX process
+process SALMON_INDEX {
+    tag "salmon_index"
+
+    input:
+    path transcriptome
+
+    output:
+    path "salmon_index"
+
+    script:
+    """
+    salmon index -t ${transcriptome} -i salmon_index
+    """
+}
+
 // -------------------- Channels --------------------
 def samplesheet_ch = Channel
   .fromPath(params.samplesheet)
@@ -25,6 +41,31 @@ workflow {
     FASTQC(samples_ch)
     trimmed_ch = TRIMGALORE(samples_ch)
     quant_ch   = SALMON(trimmed_ch, params.index)
+
+    // Modified pipeline for different cases
+    def index_ch
+
+    // index provided
+    if( params.index ) {
+        log.info "Using existing Salmon index: ${params.index}"
+        index_ch = Channel.value( file(params.index) )
+    }
+
+    // index not provided by transcriptome is
+    else if( params.transcriptome ) {
+        log.info "No index provided; building Salmon index from transcriptome: ${params.transcriptome}"
+        def transcriptome_ch = Channel.of( file(params.transcriptome) )
+        index_ch = SALMON_INDEX(transcriptome_ch)
+    }
+
+    // neither parameter --> error
+    else {
+        error """
+        No Salmon index or transcriptome provided.
+        """
+    }
+
+    quant_ch = SALMON(trimmed_ch, index_ch)
 
     if( params.run_deseq ) {
         // Collect all Salmon outputs into a map {sample: quant_path}
