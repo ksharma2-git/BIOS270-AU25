@@ -26,7 +26,7 @@ def main():
 
     # 2. Open HDF5 file
     with h5py.File(args.h5_path, "r") as h5:
-        # Adjust these dataset names based on your actual file
+        
         h5_protein_ids = h5["protein_ids"][:]       # array of bytes/strings
         embeddings_ds = h5["embeddings"]            # shape: (N_total, 164)
 
@@ -43,7 +43,7 @@ def main():
             if pid in id_to_index:
                 indices.append(id_to_index[pid])
             else:
-                # optionally warn / skip
+                
                 pass
 
         if len(indices) == 0:
